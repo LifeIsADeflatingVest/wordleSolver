@@ -1,0 +1,202 @@
+/* width */
+::-webkit-scrollbar {
+    width: 0.2em;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 1em #403340; 
+    border-radius: 2em;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #284563; 
+    border-radius: 2em;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #403340; 
+  }
+  body {
+      background-color:black;
+      color:cornsilk;
+      font-size:1em;
+      overflow-x: hidden;
+  }
+  h1 {
+      font-size:2.5em;
+      font-family: 'Twinkle Star', cursive;
+  }
+  h2 {
+      font-size:1.3em;
+      font-family: 'Twinkle Star', cursive;
+  }
+  h3 {
+      font-size:1.2em;
+      margin-top:2.5em;
+      font-family: 'Twinkle Star', cursive;
+  }
+  p {
+    font-family: 'Cairo', sans-serif;
+      font-size:1em;
+      margin-top: 1em;
+  }
+  a:link {
+    color: red;
+    text-decoration:none;
+  }
+  a:visited {
+    color: cyan;
+  }
+  a:hover {
+    color: hotpink;
+  }
+  a:active {
+    color: blue;
+  }
+  table {
+	width:100%;
+    border-spacing: 0.2em;
+    border-collapse: separate;
+	table-layout: fixed;
+  }
+  table tr td{
+	box-sizing: border-box;
+	padding: 0.05em;
+	height: 2em;
+	font-size:2em;
+	transition: background-color 1s;
+  }
+  input {
+      font-size:1.2em;
+      padding:0.2em;
+      margin: 0 auto;
+      width:80%;
+      font-family: 'Cairo', sans-serif;
+      background-color: rgba(40,40,40,0.2);
+      color:blanchedalmond;
+      text-align: center;
+      border: 0.05em solid darkcyan;
+      margin-top: 0.5em;
+      font-variant: all-small-caps;
+  }
+  .attention1 {
+	box-shadow: inset 0 0 0.2em 0.2em  rgb(228, 16, 16); 
+	animation: pulse 1s;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+  }
+  @keyframes pulse{
+		0% {
+			box-shadow: inset 0 0 0.2em 0.2em rgb(228, 16, 16); 
+		}
+		50% {
+			box-shadow: inset 0 0 2em 0.4em rgb(240, 99, 56); ;  
+		}
+		100% {
+			box-shadow: inset 0 0 0.2em 0.2em rgb(228, 16, 16); 
+		}
+	}
+  .button {
+      font-family: 'Cairo', sans-serif;
+      font-size:0.8em;
+      margin-left:0.5em;
+      margin-top:0.5em;
+      padding:0.5em 1em;
+      border-radius:0.5em;
+	  border: 0.05em solid darkcyan;
+      background: #2e5a9e;
+      color:blanchedalmond;
+  }
+  .button:hover {
+      animation: btn_hover 0.6s;
+      animation-fill-mode: forwards;
+  }
+  @keyframes btn_hover{
+      0% {
+          box-shadow: 0 0 0 0 cornsilk;
+      }
+      100% {
+          box-shadow: 0 0 1.5em 0 cornsilk;
+      }
+  }
+	  #meterGauge {
+		width:98%;
+		display:none;
+		margin: 0 auto;
+		margin-bottom: 1em;
+		border-radius: 1.5em;
+		border: 0.15em solid hsl(200, 97%, 44%);
+		box-sizing: border-box;
+	}
+	#meterBar{
+		padding: 0.3em;
+		text-align:center;
+		border-radius: 1.5em;
+		transition: width  1s;
+		width: 20%;
+		background-color:  hsl(208, 97%, 64%);
+	}
+  #container {
+      width:50%;
+      text-align:center;
+      margin: 0 auto;
+      margin-bottom: 3em;
+  }
+  #inputs {
+      font-size:1.1em;
+      font-variant: all-small-caps;
+      padding:0.2em;
+      margin: 0 auto;
+      width:100%;
+      font-family: 'Cairo', sans-serif;
+      background-color: rgba(40,40,40,0.5);
+      color:blanchedalmond;
+      text-align: center;
+	  box-sizing: border-box;
+      margin-bottom: 1em;
+  }
+  #buttons {
+      display:none;
+  }
+  #intro{
+	  box-sizing: border-box;
+  }
+  #usedLetters {
+	  display:none;
+	  font-variant: all-small-caps;
+  }
+  #theUsed {
+	  margin: 0;
+	  padding:0;
+	  font-size: 2em;
+  }
+  
+ @media only screen and (min-width: 601px) {
+	#usedLetters {
+	  position: fixed;
+	  top: 2em;
+	  left: 2em;
+	  max-width:20%;
+	}
+ }
+
+ @media only screen and (max-width: 600px) {
+    #container {
+        width: 98%;
+    }
+	.button {
+		padding:0.4em 0.8em;
+	}
+	table {
+		border-spacing: 0.05em;
+	}
+	table tr td{
+		padding: 0.15em;
+		height: 1.5em;
+		font-size:1em;
+	}
+}
+  

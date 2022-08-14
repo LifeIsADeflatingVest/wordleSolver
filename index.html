@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet">
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#000000">
+    <meta charset="utf-8">
+    <title>Wordle Solver</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300&family=Itim&family=Twinkle+Star&display=swap" rel="stylesheet"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rita/2.6.1/rita.js"
+        integrity="sha512-K+EvDE/124txA0MSLpqlDXYJdqW09VS4iUT8bkZyW+qQcytpj0SWWHsKu3t4HlUotoW6vkHoroyQ2NQTgI8Ajw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="script1.js"></script>
+	<script src="words.js"></script>
+</head>
+
+<body>
+    <div id="container">
+		<p>Enter letters. Tap on a letter to change its status to green. </p>
+		<table>
+			<tr>
+				<td><input id="input1" type="text" onkeyup="validate(this);"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​</td>
+				<td><input id="input2" type="text" onkeyup="validate(this);"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​</td>
+				<td><input id="input3" type="text" onkeyup="validate(this);"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​</td>
+				<td><input id="input4" type="text" onkeyup="validate(this);"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​</td>
+				<td><input id="input5" type="text" onkeyup="validate(this);"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​</td>
+			</tr>
+		</table>
+		<button class="button" onclick="submitChoices();">Submit Choice</button>
+		<button class="button" onclick="letter1.value = '';letter2.value = '';letter3.value = '';letter4.value = '';letter5.value = '';window.location.reload()">Start Over</button>
+		<div>
+			<p id="wordList" style="display:none"></p>
+		</div>
+    </div>
+</body>
+
+</html>
