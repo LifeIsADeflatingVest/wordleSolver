@@ -22,6 +22,7 @@ $(document).ready(function(){
 	for (var y=1;y<6;y++) {
 		$("#input"+y).click(function(){
 			if (isLetter(this.value)) {
+				this.style.color= "black";
 				if (this.style.backgroundColor != "green") {
 					this.style.backgroundColor = "green";
 				}
@@ -39,9 +40,15 @@ function validate(input){
 		input.style.color = "black";
 		input.style.backgroundColor = "yellow";
 	}
+	else {
+		input.style.backgroundColor = "black";
+	}
 }
 function submitChoices() {
-	$("#subButt").fadeOut(300);
+	gArray.length=0;
+	gWord = "";
+	theWord = "";
+	yArray.length=0;
 	outL = outLets.value.replace(/[^a-z]/gi, '');
 	val1 = letter1.value;
 	if (val1=="") {
@@ -102,22 +109,36 @@ function wordCheck() {
 		});
 	}
 	function showRes(arr) {
-		arr.forEach(function(val, ind, ar){
+		arr.forEach(function(val, ind, ar){ // remove words including a letter not in the word-to-be-guessed
 			for (var i=0;i<outL.length;i++) {
 				if (val.includes(outL[i])) {
 					ar = ar.filter(e => e !== val)
 				}
 			}
 		});
-		
-		if (arr.length < 50) {
-			$("#wordList").html(arr.join(" "));
-			$("#wordList").fadeIn(1500);
-		}
-		else {
-			$("#wordList").html("More than 50 hits. Try entering more letters");
-			$("#wordList").fadeIn(1500);
-		}
+		arr.forEach(function(value, ind, ar){ // remove words with letter in yellow-letter position (since it can't be there)
+			for (var i=1;i<6;i++) {
+				if (eval("val"+i)==value[i]) {
+					ar = ar.filter(e => e !== value)
+				}
+			}
+		});
+		$("#wordList").fadeOut(500);
+		setTimeout(function(){
+			if (arr.length < 50) {
+				$("#wordList").html(arr.join(" "));
+				$("#wordList").fadeIn(1500);
+			}
+			else {
+				$("#wordList").html("More than 50 hits. Try entering more letters");
+				$("#wordList").fadeIn(1500);
+			}
+			
+			for (var y=1;y<6;y++) {
+				document.getElementById("input"+y).style.backgroundColor = "black";
+				document.getElementById("input"+y).style.color = "white";
+			}
+		}, 510);
 	}
 }
 function isLetter(str) {
@@ -139,5 +160,5 @@ function getWordArray() {
     });
 }
 function startOver() {
-	window.location.reload()
+	window.location.reload();
 }
