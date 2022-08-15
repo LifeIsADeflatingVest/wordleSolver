@@ -91,12 +91,22 @@ function wordCheck() {
 		showRes(yArray);
 	}
 	else {	
+		var tempArr = [];
 		yelArrPopulate();
 		getWordArray().then(function(obj){
 			for (var i=0;i<obj.length;i++) {
 				gArray.push(obj[i].word);
 			}
-			showRes(yArray.filter(item => gArray.includes(item)));
+			tempArr = yArray.filter(item => gArray.includes(item));
+			if (tempArr.length < 1) {
+				if (gArray.length > 0) {
+					tempArr = gArray;
+				}
+				else {
+					tempArr = yArray;
+				}
+			}
+			showRes(tempArr);
 		});
 	}
 	
@@ -112,14 +122,14 @@ function wordCheck() {
 		arr.forEach(function(val, ind, ar){ // remove words including a letter not in the word-to-be-guessed
 			for (var i=0;i<outL.length;i++) {
 				if (val.includes(outL[i])) {
-					ar = ar.filter(e => e !== val)
+					arr = arr.filter(e => e !== val)
 				}
 			}
 		});
 		arr.forEach(function(value, ind, ar){ // remove words with letter in yellow-letter position (since it can't be there)
 			for (var i=1;i<6;i++) {
 				if (eval("val"+i)==value[i]) {
-					ar = ar.filter(e => e !== value)
+					arr = arr.filter(e => e !== value)
 				}
 			}
 		});
