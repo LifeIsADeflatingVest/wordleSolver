@@ -122,66 +122,12 @@
           box-shadow: 0 0 1.5em 0 cornsilk;
       }
   }
-	  #meterGauge {
-		width:98%;
-		display:none;
-		margin: 0 auto;
-		margin-bottom: 1em;
-		border-radius: 1.5em;
-		border: 0.15em solid hsl(200, 97%, 44%);
-		box-sizing: border-box;
-	}
-	#meterBar{
-		padding: 0.3em;
-		text-align:center;
-		border-radius: 1.5em;
-		transition: width  1s;
-		width: 20%;
-		background-color:  hsl(208, 97%, 64%);
-	}
   #container {
       width:50%;
       text-align:center;
       margin: 0 auto;
       margin-bottom: 3em;
   }
-  #inputs {
-      font-size:1.1em;
-      font-variant: all-small-caps;
-      padding:0.2em;
-      margin: 0 auto;
-      width:100%;
-      font-family: 'Cairo', sans-serif;
-      background-color: rgba(40,40,40,0.5);
-      color:blanchedalmond;
-      text-align: center;
-	  box-sizing: border-box;
-      margin-bottom: 1em;
-  }
-  #buttons {
-      display:none;
-  }
-  #intro{
-	  box-sizing: border-box;
-  }
-  #usedLetters {
-	  display:none;
-	  font-variant: all-small-caps;
-  }
-  #theUsed {
-	  margin: 0;
-	  padding:0;
-	  font-size: 2em;
-  }
-  
- @media only screen and (min-width: 601px) {
-	#usedLetters {
-	  position: fixed;
-	  top: 2em;
-	  left: 2em;
-	  max-width:20%;
-	}
- }
 
  @media only screen and (max-width: 600px) {
     #container {

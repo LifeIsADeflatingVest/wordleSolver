@@ -1,8 +1,10 @@
-var letter1, letter2, letter3, letter4, letter5;
+var letter1, letter2, letter3, letter4, letter5, outLets;
 var val1, val2, val3, val4, val5;
-var theArray = [];
+var yArray = [];
+var gArray = [];
 var theWord = "";
 var gWord = "";
+var outL = "";
 
 $(document).ready(function(){
 	letter1 = document.getElementById("input1");
@@ -10,10 +12,23 @@ $(document).ready(function(){
 	letter3 = document.getElementById("input3");
 	letter4 = document.getElementById("input4");
 	letter5 = document.getElementById("input5");
+	outLets = document.getElementById("outLetters");
+	letter1.value = '';
+	letter2.value = '';
+	letter3.value = '';
+	letter4.value = '';
+	letter5.value = '';
+	outLets.value = '';
 	for (var y=1;y<6;y++) {
 		$("#input"+y).click(function(){
-			if (isLetter(this.value))
-			this.style.backgroundColor = "green";
+			if (isLetter(this.value)) {
+				if (this.style.backgroundColor != "green") {
+					this.style.backgroundColor = "green";
+				}
+				else {
+					this.style.backgroundColor = "yellow";
+				}
+			}
 		});
 	}
 });
@@ -26,8 +41,8 @@ function validate(input){
 	}
 }
 function submitChoices() {
-	theArray.length=0;
-	$("#wordList").fadeOut(0);
+	$("#subButt").fadeOut(300);
+	outL = outLets.value.replace(/[^a-z]/gi, '');
 	val1 = letter1.value;
 	if (val1=="") {
 		val1 = "?";
@@ -65,31 +80,50 @@ function wordCheck() {
 		}
 	}
 	if (gWord == "?????") {
-			theWord = theWord.replace(/[?=]/g, "");
-			theWords.forEach(function(value, index, arr){
-				 if (test(value, theWord)) {
-					 theArray.push(value);
-				 }
-			});
+		yelArrPopulate();
+		showRes(yArray);
 	}
 	else {	
+		yelArrPopulate();
 		getWordArray().then(function(obj){
 			for (var i=0;i<obj.length;i++) {
-				theArray.push(obj[i].word);
-				showRes();
+				gArray.push(obj[i].word);
 			}
+			showRes(yArray.filter(item => gArray.includes(item)));
 		});
 	}
-	showRes();
-	function showRes() {
-		$("#wordList").html(theArray.join(" "));
-		$("#wordList").fadeIn(1500);
+	
+	function yelArrPopulate() {
+		theWord = theWord.replace(/[?=]/g, "");
+		theWords.forEach(function(value, index, arr){
+			 if (containsSub(value, theWord)) {
+				 yArray.push(value);
+			 }
+		});
+	}
+	function showRes(arr) {
+		arr.forEach(function(val, ind, ar){
+			for (var i=0;i<outL.length;i++) {
+				if (val.includes(outL[i])) {
+					ar = ar.filter(e => e !== val)
+				}
+			}
+		});
+		
+		if (arr.length < 50) {
+			$("#wordList").html(arr.join(" "));
+			$("#wordList").fadeIn(1500);
+		}
+		else {
+			$("#wordList").html("More than 50 hits. Try entering more letters");
+			$("#wordList").fadeIn(1500);
+		}
 	}
 }
 function isLetter(str) {
   return str.length === 1 && str.match(/[a-z]/i);
 }
-function test(string, substring) {
+function containsSub(string, substring) {
     var letters = [...string];
     return [...substring].every(x => {
         var index = letters.indexOf(x);
@@ -101,6 +135,9 @@ function test(string, substring) {
 }
 function getWordArray() {
     return new Promise(function (resolve, reject) {
-        resolve($.get('https://api.datamuse.com/words?sp='+gWord+'&max=50'));
+        resolve($.get('https://api.datamuse.com/words?sp='+gWord+'&max=500'));
     });
+}
+function startOver() {
+	window.location.reload()
 }
