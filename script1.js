@@ -157,7 +157,7 @@ function isLetter(str) {
   return str.length === 1 && str.match(/[a-z]/i);
 }
 function containsSub(string, substring) {
-    var letters = [...string];
+    var letters = [...string];//
     return [...substring].every(x => {
         var index = letters.indexOf(x);
         if (~index) {
