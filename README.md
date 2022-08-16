@@ -1,1 +1,3 @@
 Wordle Solver is a very simple app designed to help you solve wordle puzzles. Simply give the app what you've done so far (i.e. how many letters, either in yellow or green position you've discovered, as well as letters <em>not</em> in the word), and the app will display possible solutions. The more letters you supply (either in the word or not), the more the app can narrow down options. Please note that the app won't display results if there are more than 50.
+
+Try the program [here](https://rawcdn.githack.com/LifeIsADeflatingVest/wordleSolver/4ef78f2252dee6e81153ceb969c0d93d870c322d/index.html).
