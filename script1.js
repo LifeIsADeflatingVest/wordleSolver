@@ -45,6 +45,7 @@ function validate(input){
 	}
 }
 function submitChoices() {
+	$("#supButt").fadeOut(250);
 	gArray.length=0;
 	gWord = "";
 	theWord = "";
@@ -72,7 +73,7 @@ function submitChoices() {
 	}	
 	theWord = (val1+val2+val3+val4+val5).toLowerCase();
 	if (theWord == "?????") {
-		alert ("No letters given!");
+		alert ("You must supply at least one in-word letter");
 		return;
 	}
 	wordCheck();
@@ -138,6 +139,7 @@ function wordCheck() {
 			if (arr.length < 50) {
 				$("#wordList").html(arr.join(" "));
 				$("#wordList").fadeIn(1500);
+				$("#supButt").fadeIn(2000);
 			}
 			else {
 				$("#wordList").html("More than 50 hits. Try entering more letters");

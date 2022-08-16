@@ -23,7 +23,8 @@
 
 <body>
     <div id="container">
-		<p>Enter letters. Click on a letter to toggle its status between yellow/green:</p>
+	<h1>Wordle Solver</h1>
+		<p style="text-align:justify">Wordle Solver is a very simple app designed to help you solve wordle puzzles. Simply give the app what you've done so far (i.e. how many letters, either in yellow or green position you've discovered, as well as letters <em>not</em> in the word), and the app will display possible solutions. The more letters you supply (either in the word or not), the more the app can narrow down options. Please note that the app won't display results if there are more than 50.</p>
 		<table>
 			<tr>
 				<td><input id="input1" type="text" onkeyup="validate(this);"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​</td>
@@ -33,18 +34,20 @@
 				<td><input id="input5" type="text" onkeyup="validate(this);"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​</td>
 			</tr>
 		</table>
-		<p style="margin-top:2em">Enter letters <em>not</em> in word:</p>
+		<p>Enter letters in the word (1 minimum). Click on a letter to toggle its status between yellow/green</p>
 		<table>
 			<tr>
 				<td><input id="outLetters" type="text"></td>
 			</tr>
 		</table>
+		<p>Enter letters <em>not</em> in the word (optional)</p>
 		<div style="margin-top:2em">
 			<button id="subButt" class="button" onclick="submitChoices();">Submit Choice</button>
 			<button class="button" onclick="startOver();">Start Over</button>
 		</div>
 		<div>
 			<p id="wordList" style="display:none"></p>
+			<button id="supButt" onclick="location.href = 'https://blog.homeforfiction.com/how-to-support-home-for-fiction/'" class="button" style="background-color:darkcyan; color:ghostwhite;border:0.2em solid darkcyan;display:none;font-size:0.8em;margin-top:2em">Support this free – <em>and ad-free</em> – program</button>
 		</div>
     </div>
 </body>
